@@ -95,6 +95,41 @@ class CallkitIncomingBroadcastReceiver : BroadcastReceiver() {
                 }
     }
 
+    
+    @Suppress("UNCHECKED_CAST")
+    private fun Bundle.toData(): Map<String, Any> {
+        val android = mapOf(
+            "isCustomNotification" to getBoolean(EXTRA_CALLKIT_IS_CUSTOM_NOTIFICATION, false),
+            "ringtonePath" to getString(EXTRA_CALLKIT_RINGTONE_PATH, ""),
+            "backgroundColor" to getString(EXTRA_CALLKIT_BACKGROUND_COLOR, ""),
+            "backgroundUrl" to getString(EXTRA_CALLKIT_BACKGROUND_URL, ""),
+            "actionColor" to getString(EXTRA_CALLKIT_ACTION_COLOR, ""),
+            "incomingCallNotificationChannelName" to getString(
+                EXTRA_CALLKIT_INCOMING_CALL_NOTIFICATION_CHANNEL_NAME,
+                ""
+            ),
+            "missedCallNotificationChannelName" to getString(
+                EXTRA_CALLKIT_MISSED_CALL_NOTIFICATION_CHANNEL_NAME,
+                ""
+            ),
+        )
+        return mapOf(
+            "id" to getString(EXTRA_CALLKIT_ID, ""),
+            "nameCaller" to getString(EXTRA_CALLKIT_NAME_CALLER, ""),
+            "avatar" to getString(EXTRA_CALLKIT_AVATAR, ""),
+            "number" to getString(EXTRA_CALLKIT_HANDLE, ""),
+            "type" to getInt(EXTRA_CALLKIT_TYPE, 0),
+            "duration" to getLong(EXTRA_CALLKIT_DURATION, 0L),
+            "textAccept" to getString(EXTRA_CALLKIT_TEXT_ACCEPT, ""),
+            "textDecline" to getString(EXTRA_CALLKIT_TEXT_DECLINE, ""),
+            "textMissedCall" to getString(EXTRA_CALLKIT_TEXT_MISSED_CALL, ""),
+            "textCallback" to getString(EXTRA_CALLKIT_TEXT_CALLBACK, ""),
+            "extra" to getSerializable(EXTRA_CALLKIT_EXTRA) as HashMap<String, Any?>,
+            "android" to android
+        )
+    }
+
+
 
     @SuppressLint("MissingPermission")
     override fun onReceive(context: Context, intent: Intent) {
