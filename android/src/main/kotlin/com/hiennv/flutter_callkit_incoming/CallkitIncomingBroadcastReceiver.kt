@@ -101,6 +101,7 @@ class CallkitIncomingBroadcastReceiver : BroadcastReceiver() {
         val callkitNotificationManager = CallkitNotificationManager(context)
         val action = intent.action ?: return
         val data = intent.extras?.getBundle(EXTRA_CALLKIT_INCOMING_DATA) ?: return
+        Cache.updateLatestEvent(action, data.toData())
         when (action) {
             ACTION_CALL_INCOMING -> {
                 try {
