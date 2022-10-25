@@ -103,15 +103,7 @@ class CallkitIncomingBroadcastReceiver : BroadcastReceiver() {
             "ringtonePath" to getString(EXTRA_CALLKIT_RINGTONE_PATH, ""),
             "backgroundColor" to getString(EXTRA_CALLKIT_BACKGROUND_COLOR, ""),
             "backgroundUrl" to getString(EXTRA_CALLKIT_BACKGROUND_URL, ""),
-            "actionColor" to getString(EXTRA_CALLKIT_ACTION_COLOR, ""),
-            "incomingCallNotificationChannelName" to getString(
-                EXTRA_CALLKIT_INCOMING_CALL_NOTIFICATION_CHANNEL_NAME,
-                ""
-            ),
-            "missedCallNotificationChannelName" to getString(
-                EXTRA_CALLKIT_MISSED_CALL_NOTIFICATION_CHANNEL_NAME,
-                ""
-            ),
+            "actionColor" to getString(EXTRA_CALLKIT_ACTION_COLOR, ""),            
         )
         return mapOf(
             "id" to getString(EXTRA_CALLKIT_ID, ""),
